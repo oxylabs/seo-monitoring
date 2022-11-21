@@ -1,0 +1,68 @@
+version: '3.7'
+services:
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+    command: [
+      "--bind",
+      "0.0.0.0",
+    ]
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: [
+      "celery",
+      "--app=tasks",
+      "worker",
+      "--autoscale=8,1",
+      "--loglevel=INFO",
+      "-Ofair",
+      "-Qmain-queue",
+      "-c1",
+    ]
+    volumes:
+      - ./:/app/
+      - ./input:/app/input
+      - ./output:/app/output
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+      - PYTHONPATH=.
+      - PYTHONUNBUFFERED=1
+      - PYTHONDONTWRITEBYTECODE=1
+    depends_on:
+      - "redis"
+  flower:
+    image: mher/flower
+    command: [
+      "celery",
+      "--broker=redis://redis:6379/0",
+      "flower",
+      "--port=5555",
+    ]
+    ports:
+      - "5555:5555"
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+    depends_on:
+      - "redis"
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: python main.py
+    tty: true
+    volumes:
+      - ./:/app/:cached
+      - ./.docker/.ipython:/root/.ipython:cached
+      - ./input:/app/input
+      - ./output:/app/output
+    environment:
+      - PYTHONPATH=.
+      - PYTHONUNBUFFERED=1
+      - PYTHONDONTWRITEBYTECODE=1
+    depends_on:
+      - "flower"
