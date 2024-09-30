@@ -5,7 +5,7 @@
 [![](https://dcbadge.vercel.app/api/server/eWsVUJrnG5)](https://discord.gg/GbxmdGhZjq)
 
 ### Video 
-[Building an SEO Monitoring System with Python, Celery, and SERP Scraper API](https://experts.oxylabs.io/lessons/building-seo-monitoring-system)
+[Building an SEO Monitoring System with Python, Celery, and SERP Scraper API](https://experts.oxylabs.io/lessons/building-seo-monitoring-system) (The API is now a part of Web Scraper API)
 
 ### Abstract
 
@@ -16,11 +16,11 @@ This solution is based on the data engineering principles of data ingestion and 
 **The features are as follows:**
 - Accepts CSV or XLSX files as an input for keyword SERP scraping
 - Moves input file to different directory after it was processed
-- Cleans the input keywords and prepares them to be submitted to the Oxylabs SERP Scraper API
+- Cleans the input keywords and prepares them to be submitted to Oxylabs Web Scraper API
 - Uses Celery to produce parallel requests to the SERP Scraper API (*refer [docker-compose](docker-compose.yml) for `--autoscale` parameter use*)
 - Aggregates the responses in exact-same order as they were submitted to the Celery worker as a task
 - Retry & timeout added for the Celery tasks
-- Authenticates each request to the SERP Scraping API
+- Authenticates each request to Web Scraping API
 - Produces a new output file (CSV or XLSX) with the results from the SERP Scraper API
 - Continuously watches for a new input file to be added for processing
 
@@ -30,11 +30,11 @@ This project uses Python 3.10.x version and runs on virtual environment (venv), 
 
 #### Credentials and configuration
 
-To properly configure the application, copy-rename bundled `dist.env` to `.env` and update the parameters as needed (*refer the docs at [Oxylabs SERP Scraper API docs](https://developers.oxylabs.io/scraper-apis/serp-scraper-api)*):
+To properly configure the application, copy-rename bundled `dist.env` to `.env` and update the parameters as needed (*refer the docs at [Oxylabs SERP Scraper API docs](https://developers.oxylabs.io/scraper-apis/web-scraper-api)*):
 
 SERP configuration
-- SERP_TARGET=**xxxxxxx** *([Refer to the Oxylabs SERP Scraper API docs](https://developers.oxylabs.io/scraper-apis/serp-scraper-api))*
-- SERP_DOMAIN=**xxxxxxx** *([Refer to the Oxylabs SERP Scraper API docs](https://developers.oxylabs.io/scraper-apis/serp-scraper-api))*
+- SERP_TARGET=**xxxxxxx** *([Refer to the Oxylabs Web Scraper API docs](https://developers.oxylabs.io/scraper-apis/web-scraper-api))*
+- SERP_DOMAIN=**xxxxxxx** *([Refer to the Oxylabs Web Scraper API docs](https://developers.oxylabs.io/scraper-apis/web-scraper-api))*
 - SERP_PARSE_RESULT=**True** *(Should SERP Scraper API parse the results?)*
 - SERP_LANGUAGE=**en**
 - SERP_PAGES=**5** *(how many pages to scrape)*
@@ -47,7 +47,7 @@ Local directories and file watcher poll (using seconds)
 - OUTPUT_FILE_NAME=**keywords_serps** *(What name to use for OUTPUT file)*
 - INPUT_POLL_TIME=**5** *(How many seconds to wait before checking for new input files)*
 
-SERP Scraper API authentication
+Web Scraper API authentication
 - OXY_SERPS_AUTH_USERNAME=**XXXXX**
 - OXY_SERPS_AUTH_PASSWORD=**YYYYY**
 
