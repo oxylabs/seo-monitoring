@@ -35,7 +35,7 @@ To properly configure the application, copy-rename bundled `dist.env` to `.env` 
 SERP configuration
 - SERP_TARGET=**xxxxxxx** *([Refer to the Oxylabs Web Scraper API docs](https://developers.oxylabs.io/scraper-apis/web-scraper-api))*
 - SERP_DOMAIN=**xxxxxxx** *([Refer to the Oxylabs Web Scraper API docs](https://developers.oxylabs.io/scraper-apis/web-scraper-api))*
-- SERP_PARSE_RESULT=**True** *(Should SERP Scraper API parse the results?)*
+- SERP_PARSE_RESULT=**True** *(Should Web Scraper API parse the results?)*
 - SERP_LANGUAGE=**en**
 - SERP_PAGES=**5** *(how many pages to scrape)*
 
