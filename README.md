@@ -17,11 +17,11 @@ This solution is based on the data engineering principles of data ingestion and 
 - Accepts CSV or XLSX files as an input for keyword SERP scraping
 - Moves input file to different directory after it was processed
 - Cleans the input keywords and prepares them to be submitted to Oxylabs Web Scraper API
-- Uses Celery to produce parallel requests to the SERP Scraper API (*refer [docker-compose](docker-compose.yml) for `--autoscale` parameter use*)
+- Uses Celery to produce parallel requests to Web Scraper API (*refer [docker-compose](docker-compose.yml) for `--autoscale` parameter use*)
 - Aggregates the responses in exact-same order as they were submitted to the Celery worker as a task
 - Retry & timeout added for the Celery tasks
 - Authenticates each request to Web Scraping API
-- Produces a new output file (CSV or XLSX) with the results from the SERP Scraper API
+- Produces a new output file (CSV or XLSX) with the results from Web Scraper API
 - Continuously watches for a new input file to be added for processing
 
 ### Installation
