@@ -30,11 +30,11 @@ This project uses Python 3.10.x version and runs on virtual environment (venv), 
 
 #### Credentials and configuration
 
-To properly configure the application, copy-rename bundled `dist.env` to `.env` and update the parameters as needed (*refer the docs at [Oxylabs SERP Scraper API docs](https://developers.oxylabs.io/scraper-apis/web-scraper-api)*):
+To properly configure the application, copy-rename bundled `dist.env` to `.env` and update the parameters as needed (*refer the docs at [Oxylabs SERP Scraper API docs](https://developers.oxylabs.io/products/web-scraper-api)*):
 
 SERP configuration
-- SERP_TARGET=**xxxxxxx** *([Refer to the Oxylabs Web Scraper API docs](https://developers.oxylabs.io/scraper-apis/web-scraper-api))*
-- SERP_DOMAIN=**xxxxxxx** *([Refer to the Oxylabs Web Scraper API docs](https://developers.oxylabs.io/scraper-apis/web-scraper-api))*
+- SERP_TARGET=**xxxxxxx** *([Refer to the Oxylabs Web Scraper API docs](https://developers.oxylabs.io/products/web-scraper-api))*
+- SERP_DOMAIN=**xxxxxxx** *([Refer to the Oxylabs Web Scraper API docs](https://developers.oxylabs.io/products/web-scraper-api))*
 - SERP_PARSE_RESULT=**True** *(Should Web Scraper API parse the results?)*
 - SERP_LANGUAGE=**en**
 - SERP_PAGES=**5** *(how many pages to scrape)*
